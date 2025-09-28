@@ -1,0 +1,178 @@
+[gd_scene load_steps=11 format=3 uid="uid://b7t2w0jrk8yx8"]
+
+[ext_resource type="Texture2D" uid="uid://ceeptded37j8n" path="res://Skyboxes/sky_cloudy015_hdr/kloppenheim_06_puresky_4k.hdr" id="1_mgc0q"]
+[ext_resource type="PackedScene" uid="uid://clx6kpjeyft6x" path="res://Scenes/camera_viewport.tscn" id="2_bb2iq"]
+[ext_resource type="Texture2D" uid="uid://b31ydb8blq54u" path="res://Assets/textures/floor_tiles_02_ao_2k.png" id="3_18r40"]
+[ext_resource type="PackedScene" uid="uid://bk7y4rj5m0dx3" path="res://Scenes/terry.tscn" id="4_6y7pd"]
+[ext_resource type="PackedScene" uid="uid://bdk07vl2t6hm4" path="res://Scenes/player.tscn" id="5_73nn6"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_bo1nx"]
+panorama = ExtResource("1_mgc0q")
+energy_multiplier = 0.19
+
+[sub_resource type="Sky" id="Sky_8gbba"]
+sky_material = SubResource("PanoramaSkyMaterial_bo1nx")
+
+[sub_resource type="Environment" id="Environment_jjvhh"]
+background_mode = 2
+sky = SubResource("Sky_8gbba")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gbba"]
+albedo_texture = ExtResource("3_18r40")
+uv1_scale = Vector3(0.24, 3.725, 3.725)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjvhh"]
+albedo_texture = ExtResource("3_18r40")
+
+[node name="main_game" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 200, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jjvhh")
+
+[node name="View" parent="." instance=ExtResource("2_bb2iq")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 2, 10, 0)
+
+[node name="Guard_rails" type="Node3D" parent="."]
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Guard_rails"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 25, 108.974, 356.612)
+visible = false
+size = Vector3(1, 62, 739)
+material = SubResource("StandardMaterial3D_8gbba")
+
+[node name="Stairway_handler" type="Node3D" parent="."]
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 60)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 120)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 90)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37, 150)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 49, 180)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 61, 210)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 73, 240)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 85, 270)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 85, 270)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 97, 300)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 109, 330)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 121, 360)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 133, 390)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 145, 420)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 157, 450)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 157, 450)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 169, 480)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 181, 510)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 193, 540)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 205, 570)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 217, 600)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 229, 630)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 241, 660)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="Stairway_handler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 253, 690)
+material_override = SubResource("StandardMaterial3D_jjvhh")
+size = Vector3(50, 12, 50)
+
+[node name="Terry" parent="." instance=ExtResource("4_6y7pd")]
+position = Vector2(1, 2)
+
+[node name="Player" parent="." instance=ExtResource("5_73nn6")]
+
+[node name="Timer" type="Timer" parent="."]

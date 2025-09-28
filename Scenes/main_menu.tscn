@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://blm4063p47jbm"]
+
+[ext_resource type="Texture2D" uid="uid://dxb7vq20mnkh7" path="res://Assets/sprites/title_photo.png" id="1_28flt"]
+[ext_resource type="PackedScene" uid="uid://cvfq673asgcj3" path="res://Scenes/menu_bible.tscn" id="4_trj04"]
+[ext_resource type="Texture2D" uid="uid://g33wdmhwru86" path="res://Assets/sprites/Title_screen_2.png" id="5_opfnp"]
+[ext_resource type="Texture2D" uid="uid://bg4p0dhu5a52f" path="res://Assets/sprites/title_screen_5.png" id="5_vr1f0"]
+[ext_resource type="PackedScene" uid="uid://jruhffysw0h6" path="res://Scenes/menu_audio.tscn" id="6_cp0ys"]
+[ext_resource type="Texture2D" uid="uid://bno50lmp0hqnv" path="res://Assets/sprites/title_screen_4.png" id="10_16hvj"]
+
+[sub_resource type="Animation" id="Animation_48xlc"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_28flt"]
+resource_name = "slide_left_to_right"
+length = 4.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ehe0"]
+_data = {
+&"RESET": SubResource("Animation_48xlc"),
+&"slide_left_to_right": SubResource("Animation_28flt")
+}
+
+[node name="MainMenu" type="Node3D"]
+
+[node name="TitlePhoto" type="Sprite2D" parent="."]
+position = Vector2(626, 376)
+texture = ExtResource("1_28flt")
+offset = Vector2(334, 164)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1ehe0")
+}
+
+[node name="TitleScreen2" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("5_opfnp")
+
+[node name="TitleScreen4" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("10_16hvj")
+
+[node name="TitleScreen5" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("5_vr1f0")
+
+[node name="Audio_controller" parent="." instance=ExtResource("6_cp0ys")]
+
+[node name="bible" parent="." instance=ExtResource("4_trj04")]

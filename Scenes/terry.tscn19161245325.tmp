@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://bk7y4rj5m0dx3"]
+
+[ext_resource type="Script" uid="uid://rny6traatt0l" path="res://Scripts/terry.gd" id="1_3p6b6"]
+[ext_resource type="Texture2D" uid="uid://bhoke6go3jkv6" path="res://Assets/sprites/terry_animated.png" id="1_4swkh"]
+
+[sub_resource type="Animation" id="Animation_3p6b6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_v1w1x"]
+resource_name = "fly"
+
+[sub_resource type="Animation" id="Animation_4swkh"]
+resource_name = "talk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v1w1x"]
+_data = {
+&"RESET": SubResource("Animation_3p6b6"),
+&"fly": SubResource("Animation_v1w1x"),
+&"talk": SubResource("Animation_4swkh")
+}
+
+[node name="Terry" type="Node2D"]
+script = ExtResource("1_3p6b6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_v1w1x")
+}
+autoplay = "talk"
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("1_4swkh")
+hframes = 2
+
+[node name="high" type="Node2D" parent="Sprite"]
+position = Vector2(390, 157)
+
+[node name="low" type="Node2D" parent="Sprite"]
+position = Vector2(967, 903)
+
+[node name="high2" type="Node2D" parent="Sprite"]
+position = Vector2(1674, 159)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvfq673asgcj3"]
+
+[ext_resource type="Script" uid="uid://x8ewvslgl1w4" path="res://Scripts/menu_bible.gd" id="1_vr2jl"]
+[ext_resource type="FontFile" uid="uid://ba1ipnlhg5ram" path="res://Assets/Fonts/CoelacanthPearlBold.otf" id="2_tvpe7"]
+[ext_resource type="Texture2D" uid="uid://dxj16odnvobxy" path="res://Assets/sprites/bible_outlined.png" id="3_g76hs"]
+[ext_resource type="Texture2D" uid="uid://1xc1uxi1o6gu" path="res://Assets/sprites/blackness.png" id="4_tvpe7"]
+
+[node name="bible" type="Node2D" node_paths=PackedStringArray("button")]
+script = ExtResource("1_vr2jl")
+button = NodePath("Button")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -614.0
+offset_top = 288.0
+offset_right = -116.0
+offset_bottom = 571.0
+pivot_offset = Vector2(187, 54)
+focus_mode = 0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_tvpe7")
+theme_override_font_sizes/font_size = 45
+text = "Start Atonement"
+icon = ExtResource("3_g76hs")
+flat = true
+autowrap_mode = 2
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="end_position" type="Node2D" parent="."]
+position = Vector2(1399, 288)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="blackness" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(960, 540)
+texture = ExtResource("4_tvpe7")
+
+[node name="blackness_pos" type="Node2D" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

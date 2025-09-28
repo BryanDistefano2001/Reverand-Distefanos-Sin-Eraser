@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://clx6kpjeyft6x"]
+
+[ext_resource type="FontFile" uid="uid://ba1ipnlhg5ram" path="res://Assets/Fonts/CoelacanthPearlBold.otf" id="1_mhsga"]
+[ext_resource type="Texture2D" uid="uid://dxj16odnvobxy" path="res://Assets/sprites/bible_outlined.png" id="2_xfji6"]
+[ext_resource type="AudioStream" uid="uid://4m0238x3hlw2" path="res://Assets/Sounds/sfx/church_bell.wav" id="3_x3vey"]
+
+[node name="camera_viewport" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 673.0
+offset_top = 296.0
+offset_right = 1248.0
+offset_bottom = 785.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.729976, 0.678118, 0.995863, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_mhsga")
+theme_override_font_sizes/font_size = 45
+text = "Click Me To Absolve Your Sins!"
+icon = ExtResource("2_xfji6")
+flat = true
+autowrap_mode = 2
+icon_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_x3vey")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

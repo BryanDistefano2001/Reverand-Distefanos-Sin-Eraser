@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://jruhffysw0h6"]
+
+[ext_resource type="Script" uid="uid://c3vt8eogs4n58" path="res://Scripts/menu_audio.gd" id="1_da144"]
+[ext_resource type="FontFile" uid="uid://ba1ipnlhg5ram" path="res://Assets/Fonts/CoelacanthPearlBold.otf" id="2_hw5wb"]
+[ext_resource type="Texture2D" uid="uid://cdrmcwbyju22n" path="res://Assets/sprites/skip_back.png" id="3_wfrga"]
+[ext_resource type="Texture2D" uid="uid://qdjwopwg55hn" path="res://Assets/sprites/skip_forward.png" id="4_fwx4i"]
+[ext_resource type="Texture2D" uid="uid://bcas60h8pg2na" path="res://Assets/sprites/christ.png" id="5_ie005"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yhxw7"]
+texture = ExtResource("4_fwx4i")
+texture_margin_bottom = 320.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_16hvj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trj04"]
+
+[node name="menu_audio" type="Node2D"]
+script = ExtResource("1_da144")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -66.24
+autoplay = true
+
+[node name="skip_back" type="Button" parent="."]
+visible = false
+offset_left = 89.0
+offset_top = 843.0
+offset_right = 650.0
+offset_bottom = 1170.0
+scale = Vector2(0.465, 0.465)
+pivot_offset = Vector2(187, 54)
+focus_mode = 0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_hw5wb")
+theme_override_font_sizes/font_size = 45
+text = "Back"
+icon = ExtResource("3_wfrga")
+flat = true
+autowrap_mode = 2
+icon_alignment = 1
+
+[node name="skip_forward" type="Button" parent="."]
+visible = false
+offset_left = 358.0
+offset_top = 843.0
+offset_right = 919.0
+offset_bottom = 1170.0
+scale = Vector2(0.465, 0.465)
+pivot_offset = Vector2(187, 54)
+focus_mode = 0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_hw5wb")
+theme_override_font_sizes/font_size = 45
+text = "Forward"
+icon = ExtResource("4_fwx4i")
+flat = true
+autowrap_mode = 2
+icon_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 625.0
+offset_top = 735.0
+offset_right = 1342.0
+offset_bottom = 1107.0
+theme_override_constants/center_grabber = 150
+theme_override_constants/grabber_offset = -25
+theme_override_icons/grabber = ExtResource("5_ie005")
+theme_override_icons/grabber_highlight = ExtResource("5_ie005")
+theme_override_icons/grabber_disabled = ExtResource("5_ie005")
+theme_override_styles/slider = SubResource("StyleBoxTexture_yhxw7")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_16hvj")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_trj04")
+min_value = -61.0
+max_value = -1.0
+step = 0.05
+value = -30.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 777.0
+offset_top = 566.0
+offset_right = 1536.0
+offset_bottom = 1060.0
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_hw5wb")
+theme_override_font_sizes/font_size = 156
+text = "Volume"
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="drag_ended" from="HSlider" to="." method="_on_h_slider_drag_ended"]
